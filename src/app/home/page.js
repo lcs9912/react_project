@@ -1,4 +1,6 @@
 "use client"
+
+
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import MenuBar from '../MenuBar';
@@ -61,9 +63,18 @@ const ActionButton = styled.button`
 `;
 
 
+export function Comment(){
+  return (
+    <>
+      <div>댓글 영역</div>
+    </>
+  )
+};
+
 export default function Home(){
 
   const [posts, setPosts] = useState([]);
+  
 
   // Replace this function with a real API call
   useEffect(() => {
@@ -102,6 +113,7 @@ export default function Home(){
 
     fetchPosts();
   }, []);
+  
   return (
     <div>
       <Feed>
@@ -117,11 +129,14 @@ export default function Home(){
             <PostActions>
               <ActionButton>❤️</ActionButton>
               <ActionButton>💬</ActionButton>
+              
               <ActionButton>🔗</ActionButton>
             </PostActions>
           </Post>
         ))}
+       
       </Feed>
+      
       <MenuBar />
     </div>
   )

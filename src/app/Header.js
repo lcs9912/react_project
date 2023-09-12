@@ -1,6 +1,28 @@
+"use client"
 
+import React from 'react';
+import styled from '@emotion/styled';
+
+const HeaderLinkStyle= styled.div`
+  h1{
+    background-color: yellow;
+    text-align: center;
+  }  
+
+  a{
+    color : black;
+    text-decoration: none;
+  }
+`;
 export function Header() {
   return (
-    <h1 className="heard">우리집(헤더)</h1>
+    <>
+      <HeaderLinkStyle>
+      <h1>
+        <a href="../" >헤더</a>
+      </h1>
+      </HeaderLinkStyle>
+    
+    </>
   );
 }
