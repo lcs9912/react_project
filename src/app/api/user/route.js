@@ -39,7 +39,7 @@ export async function POST(req) {
     
     const requestData = await req.json();
     console.log("왜 언디파인드?!?!",requestData);
-
+    // requestData 의 아는형님의 아는누나 로 선언해야지 값 받아올 수 있음 쌤한테 물어보기
     // 데이터베이스에 데이터를 삽입 또는 업데이트하는 작업을 수행합니다.
     // 예시: 데이터베이스에 "test" 테이블에 데이터 추가
     const insertResult = await new Promise((resolve, reject) => {
