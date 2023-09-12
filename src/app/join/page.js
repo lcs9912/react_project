@@ -1,5 +1,5 @@
 "use client"
-"use client"
+
 import React, { useState, useEffect } from 'react';
 
 export default function Join(){
@@ -17,6 +17,7 @@ export default function Join(){
                     var userName = e.target.userName.value;
                     
                     var jsonMap = JSON.stringify({ userId : {userId}, userPwd : {userPwd}, userEmail : {userEmail}, userPhone : {userPhone}, userNickname : {userNickname}, userName : {userName}});
+                    //var jsonMap = JSON.stringify( {userId}, {userPwd}, {userEmail}, {userPhone}, {userNickname}, {userName});
                     console.log("jsonMap",jsonMap);
                     fetch('../api/user', {
                     method: 'POST',

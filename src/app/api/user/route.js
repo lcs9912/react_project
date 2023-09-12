@@ -36,13 +36,15 @@ export async function GET(req) {
 export async function POST(req) {
   try {
     // 클라이언트로부터 전송된 JSON 데이터를 파싱합니다.
+    
     const requestData = await req.json();
+    console.log("왜 언디파인드?!?!",requestData);
 
     // 데이터베이스에 데이터를 삽입 또는 업데이트하는 작업을 수행합니다.
     // 예시: 데이터베이스에 "test" 테이블에 데이터 추가
     const insertResult = await new Promise((resolve, reject) => {
-      const sql = 'INSERT INTO user_tbl (USER_ID, USER_PWD, USER_EMAIL, USER_PHONE, USER_NICKNAME, USER_NAME) VALUES (?, ?, ?, ?, ?, ?)';  // insert 쿼리문
-      const values = [requestData.userId, requestData.userPwd, requestData.userEmail, requestData.userPhone, requestData.userNickname, requestData.userName]; // insert 값
+      const sql = `INSERT INTO user_tbl (USER_ID, USER_PWD, USER_EMAIL, USER_PHONE, USER_NICKNAME, USER_NAME) VALUES (?, ?, ?, ?, ?, ?)`;  // insert 쿼리문
+      const values = [requestData.userId.userId, requestData.userPwd.userPwd, requestData.userEmail.userEmail, requestData.userPhone.userPhone, requestData.userNickname.userNickname, requestData.userName.userName]; // insert 값
       console.log("왜안돼",values);
       db.query( sql, values, (err, result) => {
         if (err) {
