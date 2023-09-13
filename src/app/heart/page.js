@@ -5,6 +5,8 @@ import MenuBar from '../MenuBar';
 
 const Container = styled.div`
   padding: 20px;
+  width : 1200px;
+  margin : 10px auto;
 `;
 
 const ActivityTabs = styled.div`

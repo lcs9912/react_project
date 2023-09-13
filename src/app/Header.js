@@ -4,9 +4,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const HeaderLinkStyle= styled.div`
+  position: fixed;
+  
   h1{
-    background-color: yellow;
+    
     text-align: center;
+    margin: 0;
+    
   }  
 
   a{

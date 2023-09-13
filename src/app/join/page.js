@@ -9,6 +9,7 @@ export default function Join(){
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     
+                    
                     var userId = e.target.userId.value;
                     var userPwd = e.target.userPwd.value;
                     var userEmail = e.target.userEmail.value;
@@ -16,7 +17,7 @@ export default function Join(){
                     var userNickname = e.target.userNickname.value;
                     var userName = e.target.userName.value;
                     
-                    var jsonMap = JSON.stringify({ userId : {userId}, userPwd : {userPwd}, userEmail : {userEmail}, userPhone : {userPhone}, userNickname : {userNickname}, userName : {userName}});
+                    var jsonMap = JSON.stringify({ userId : userId, userPwd : userPwd, userEmail : userEmail, userPhone : userPhone, userNickname : userNickname, userName : userName});
                     //var jsonMap = JSON.stringify( {userId}, {userPwd}, {userEmail}, {userPhone}, {userNickname}, {userName});
                     console.log("jsonMap",jsonMap);
                     fetch('../api/user', {

@@ -7,6 +7,8 @@ import 'react-image-crop/dist/ReactCrop.css';
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 const Container = styled.div`
   padding: 20px;
+  width : 1200px;
+  margin : 10px auto;
 `;
 
 const Form = styled.form``;

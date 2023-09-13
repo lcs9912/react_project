@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 import MenuBar from '../MenuBar';
 const Container = styled.div`
   padding: 20px;
+  width : 1200px;
+  margin : 10px auto;
 `;
 
 const ProfileHeader = styled.div`

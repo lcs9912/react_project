@@ -8,11 +8,15 @@ const MenuBarContainer= styled.div`
   justify-content: space-around;
   align-items: center;
   position: fixed;
-  bottom: 0;
+  top : 100px;
   left: 0;
-  right: 0;
+  width: 100px;
+  flex-direction: column;
+  
+  
+  
   background-color: white;
-  height: 60px;
+  height: 500px;
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
 `;
 

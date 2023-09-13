@@ -5,6 +5,8 @@ import MenuBar from '../MenuBar';
 import InfiniteScroll from 'react-infinite-scroll-component';
 const Container = styled.div`
   padding: 20px;
+  width : 1200px;
+  margin : 10px auto;
 `;
 
 const SearchBar = styled.input`
