@@ -74,19 +74,40 @@ const Comment = styled.div`
 `;
 
 export function Content({ postId, comment, onComment }) {
+  const [newComment, setNewComment] = useState(''); // 새 댓글을 저장할 상태
+
+   // 기본 댓글 설정
+   useEffect(() => {
+    if (!comment) {
+      onComment('기본 댓글 내용'); // 댓글이 없을 경우 기본 댓글 내용 설정
+    }
+  }, [comment, onComment]);
+
+  // 댓글 입력 함수
+  const handleNewComment = () => {
+    if (newComment.trim() !== '') {
+      onComment(newComment);
+      setNewComment(''); // 입력된 댓글 초기화
+    }
+  };
+
   return (
     <>
-      <div>lcs99: 댓글 하나만 넣고 클릭하면 사진 크게 하고 옆에 댓글창 열렸음 좋겠다...</div>
-      <textarea
-        rows="4"
+      <div>lcs99: {comment}</div>
+      <input
+        type="text"
         placeholder="댓글을 입력하세요..."
-        value={comment}
-        onChange={(e) => onComment(e.target.value)}
+        value={newComment}
+        onChange={(e) => setNewComment(e.target.value)}
       />
-      
+      <button onClick={handleNewComment}>댓글 등록</button>
+      <CommentsContainer>
+        <Comment>{comment}</Comment>
+      </CommentsContainer>
     </>
   );
 }
+
 
 export default function Home(){
 
@@ -153,7 +174,7 @@ export default function Home(){
   
   return (
     <div>
-      <h1>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ뭐가 있으면 좋을거 같은데ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</h1>
+      <h1>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ뭐가 있으면 좋을거 같은데ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</h1>
       <Feed>
         {posts.map((post) => (
           <Post key={post.id}>  
@@ -175,12 +196,6 @@ export default function Home(){
                 comment={comments[post.id] || ''}
                 onComment={(comment) => handleComment(post.id, comment)}
               />
-            )}
-            {/* 댓글 출력 */}
-            {comments[post.id] && (
-              <CommentsContainer>
-                <Comment>{comments[post.id]}</Comment>
-              </CommentsContainer>
             )}
           </Post>
           
