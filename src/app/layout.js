@@ -1,7 +1,7 @@
 
 import './globals.css'
 import MenuBar from './MenuBar'
-import { Header } from './Header'
+
 
 
 export default function RootLayout({ children }) {
@@ -9,9 +9,10 @@ export default function RootLayout({ children }) {
     <>  
       <html lang="en">
         <body >
-          <Header></Header>
+        <MenuBar/>
+          
           {children}
-          <MenuBar/>
+        
         </body>
       </html>
     </>
