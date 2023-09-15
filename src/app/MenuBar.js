@@ -22,7 +22,7 @@ const MenuBarContainer= styled.div`
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
 
   #iconTop{
-    margin-top: 100px;
+    margin-top: 156px;
   }
 
   #lastIcon{

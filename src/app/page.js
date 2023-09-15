@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image'
 import { FaRunning } from 'react-icons/fa';
 
+
 const HomeStyleContainer= styled.div`
   width: 1000px;
   display: flex;
@@ -46,9 +47,9 @@ const HomeStyleContainer= styled.div`
   }
   #inputId{
     margin: 37px 0px;
-    
-    
   }
+
+  
 
 `;
 
@@ -61,6 +62,15 @@ export default function Home() {
       
         <div className='siteSelf'> {/* 사이트 소개 */}
           <div id='loginLeft'>
+          <a href="../">
+            <Image
+              className='logoImg'
+              src='/mylogo.png'
+              width={300}
+              height= {70}
+              alt='logo'>
+            </Image>
+          </a>
             <h1>선택장애 sns</h1>
             <h2>선택에 어려움이 있다면 </h2>
             <h2>사람들에게 도움을 요청해보세요</h2>

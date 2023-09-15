@@ -7,12 +7,14 @@ import Image from 'next/image';
 const HeaderLinkStyle= styled.div`
   position: fixed;
   left : 0px;
-  top : 0px;
+  top : 19px;
   width : 100%;
   
   
   h1{
     margin: 30px;
+    margin-left : 0px;
+    
   
   }  
 
@@ -30,13 +32,16 @@ export function Header() {
     <>
       <HeaderLinkStyle>
       <h1>
-      {/* <Image
-                  src='/mylogo.png'
-                  width={100}
-                  height={0}
-                  alt='logo'
-              /> */}
-        <a href="../" >LOGO</a>
+      <a href="../">
+        <Image
+
+          src='/mylogo.png'
+          width={200}
+          height= {50}
+          alt='logo'>
+       </Image>
+      </a>
+       
       </h1>
       </HeaderLinkStyle>
     
