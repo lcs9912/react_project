@@ -69,7 +69,7 @@ const CommentSection = styled.div`
     margin-bottom : 10px;
     height: 80%;
 
-    #zzz{
+    .zzz{
       font-size : 12px;
       cursor: pointer;
       margin-left : 10px;
@@ -88,6 +88,8 @@ const CommentSection = styled.div`
     left : 273px;
     cursor: pointer;
   }
+
+  
 `;
 
 const CommentInput = styled.input`
@@ -223,13 +225,13 @@ export function PostModal({ post, onClose }) {
             
             <CommentList>
             <div>hardId12 : 아이유가 어디있음?</div>
-            <div id='zzz'>답글 달기</div>
+            <div className='zzz'>답글 달기</div>
             <div>sklgd12 : 고양이 귀여우니까 개추</div>
-            <div id='zzz'>답글 달기</div>
+            <div className='zzz'>답글 달기</div>
               {comments.map((comment, index) => (
                 <div key={index}>
                   {comment}
-                  <div id='zzz'>답글 달기</div>    
+                  <div className='zzz'>답글 달기</div>    
                 </div>
                 
               
@@ -357,7 +359,7 @@ export default function Home(){
 
   return (
     <div>
-      <h1>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ뭐가 있으면 좋을거 같은데ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</h1>
+      <h1>--------------------------------------------------------------스토리 넣고싶당---------------------------------------- </h1>
       <Feed>
         {posts.map((post) => (
           

@@ -157,13 +157,7 @@ export default function User(){
 
     fetchPosts();
   }, []);
-  const openPostModal = (post) => {
-    setSelectedPost(post);
-  };
-
-  const closePostModal = () => {
-    setSelectedPost(null);
-  };
+  
 
   const handleEditProfile = () => {
     // Implement edit profile logic here
@@ -232,45 +226,7 @@ export default function User(){
   </Container>
   <MenuBar />
   
-  <div>  {/* 여기부터 는 home 에서 퍼온거임 여기 페이지에 맞게 수정해야돼 집가서 화이팅해라 이거야~~ */}
-      <h1>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ뭐가 있으면 좋을거 같은데ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</h1>
-      <Feed>
-        {posts.map((post) => (
-          
-          <Post key={post.id}>  
-            <PostHeader>
-              <User>
-                <Avatar src={post.user.avatar} alt={post.user.username}/>
-                <Username>{post.user.username}</Username>
-              </User>
-            </PostHeader>
-            <PostImage src={post.imageUrl} alt="Post" onClick={() => openPostModal(post)}  />
-             
-            <PostActions>
-              <ActionButton onClick={() => handleLikeClick(post.id)}>
-                {likedPosts.includes(post.id) ? '❤️' : '🤍'}
-              </ActionButton>
-              <ActionButton onClick={() => openPostModal(post)}>💬</ActionButton>
-              <ActionButton>🔗</ActionButton>
-            </PostActions>
-            <PostContent>
-              <div><span>hagisilta_18</span>님 여러 명이 좋아합니다.</div>
-              <span>{post.user.username}</span> {post.postContent}
-              <div><a onClick={() => openPostModal(post)}>댓글 보기</a></div>
-              
-            </PostContent>
-            
-          </Post>
-          
-        ))}
-       
-      </Feed>
-      
-      <MenuBar />
-      {selectedPost && (
-        <PostModal post={selectedPost} onClose={closePostModal} />
-      )}
-    </div>{/*  여기까지 */}
+  
     
 </div>
 
