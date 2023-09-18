@@ -101,6 +101,8 @@ export default function PlusSquare(){
   const handleSocialShare = (platform) => {
     // Implement social sharing logic here
   };
+
+  
   return(
     <div>
       <Container>
@@ -149,7 +151,7 @@ export default function PlusSquare(){
             </SocialIcon>
             </SocialShare>
             </Container>
-            <MenuBar />
+            
             </div>
         );
     };

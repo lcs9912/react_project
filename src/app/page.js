@@ -84,34 +84,33 @@ export default function Home() {
                       
                       e.preventDefault();
 
-                      var userId = e.target.userId.value;
-                      var userPwd = e. target.userPwd.value;
+                      location.href="/home"
+                      // var userId = e.target.userId.value;
+                      // var userPwd = e. target.userPwd.value;
                       
-                      var userInfo = JSON.stringify({userId : userId, userPwd : userPwd});
+                      // var userInfo = JSON.stringify({userId : userId, userPwd : userPwd});
 
-                      var option = {
-                        method : 'Login',
-                        headers : {'Content-type' : 'application/json'},
-                        body : userInfo,
-                      }
+                      // var option = {
+                      //   method : 'Login',
+                      //   headers : {'Content-type' : 'application/json'},
+                      //   body : userInfo,
+                      // }
                       
-                        fetch(`../api/user/`, option) // API 라우트를 호출  ? 뒤에는 조건
-                          .then((response) => {
-                            if (!response.ok) {
-                              throw new Error('서버 응답이 실패했습니다.');
-                            }
-                            return response.json();
-                          })    
-                          .then((data) => {
-                            console.log(data);
-                            setPosts(data);
-                          })
-                          .catch((error) => {
-                            console.error('데이터를 가져오는 중 오류 발생:', error);
-                          });
-                      }
-                      
-                    }>
+                      //   fetch(`../api/user/`, option) // API 라우트를 호출  ? 뒤에는 조건
+                      //     .then((response) => {
+                      //       if (!response.ok) {
+                      //         throw new Error('서버 응답이 실패했습니다.');
+                      //       }
+                      //       return response.json();
+                      //     })    
+                      //     .then((data) => {
+                      //       console.log(data);
+                      //       setPosts(data);
+                      //     })
+                      //     .catch((error) => {
+                      //       console.error('데이터를 가져오는 중 오류 발생:', error);
+                      //     });
+                      }}>
                         <div id="inputId">
                           <div><input name="userId" placeholder='아이디' className='inputText'></input></div>
                           <div><input name="userPwd" placeholder='비밀번호' className='inputText'></input></div>

@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import MenuBar from '../MenuBar';
 const Container = styled.div`
@@ -96,11 +96,74 @@ const Posts = styled.div`
 `;
 
 const Post = styled.img`
-  width: 100%;
+  width : 100%;
+  height : 400px;
   object-fit: cover;
 `;
+
+// 여기부터 home 에서 퍼온거 집가서 여기 페이지에 맞게 수정하자 이거ㅑㅇ~~!!
+
 export default function User(){
   const [activeTab, setActiveTab] = useState('posts');
+  const [posts, setPosts] = useState([]);
+  const [selectedPost, setSelectedPost] = useState(null);
+  useEffect(() => {
+    // Fetch posts from API here
+    const fetchPosts = async () => {
+      const dummyPosts = [
+        {
+          id: 1,
+          user: {
+            username: 'cansin_i',
+            avatar: '/bigHuman.jpg',
+          },
+          imageUrl: 'https://post-phinf.pstatic.net/MjAyMDEyMzBfNjAg/MDAxNjA5Mjg4NzIzNDAx.qfbbjr3P-JiB1ioPif26h28fPwc05mpIRQZTyKM_6Wkg.5lI5_OJSuVMQDLoXoB1bDPNuO6hSZd9TNLlbrBME0CIg.JPEG/Iag0t8S0m8BJ7zwrx0ve16nHA9TI.jpg?type=w400',
+          postContent : '아이유 이쁘면 개추', 
+          
+        },
+        {
+          id: 4,
+          user: {
+            username: 'cansin_i',
+            avatar: '/bigHuman.jpg',
+          },
+          imageUrl: '/dozzi.jpg',
+          postContent : '아 ㅈㄴ 귀엽다', 
+        },
+        {
+          id: 5,
+          user: {
+            username: 'cansin_i',
+            avatar: '/bigHuman.jpg',
+          },
+          imageUrl: '/dozzi2.jpg',
+          postContent : '코박죽', 
+        },
+        {
+          id: 6,
+          user: {
+            username: 'cansin_i',
+            avatar: '/bigHuman.jpg',
+          },
+          imageUrl: '/bori.jpg',
+          postContent : '뭘봐', 
+        },
+
+        
+      ];
+
+      setPosts(dummyPosts);
+    };
+
+    fetchPosts();
+  }, []);
+  const openPostModal = (post) => {
+    setSelectedPost(post);
+  };
+
+  const closePostModal = () => {
+    setSelectedPost(null);
+  };
 
   const handleEditProfile = () => {
     // Implement edit profile logic here
@@ -109,9 +172,9 @@ export default function User(){
     <div>
       <Container>
         <ProfileHeader>
-          <Avatar src="https://via.placeholder.com/150" />
+          <Avatar src="/bigHuman.jpg" />
           <UserInfo>
-            <Username>더조은컴퓨터 홍길동</Username>
+            <Username>cansin_i</Username>
             <Bio>Photographer and traveler</Bio>
             <Stats>
               <StatItem>
@@ -146,12 +209,14 @@ export default function User(){
         Saved
       </Tab>
     </PostTabs>
+
     {activeTab === 'posts' && (
       <Posts>
         {/* Replace the src attribute with the user's actual post image URLs */}
-        <Post src="https://via.placeholder.com/300" />
-        <Post src="https://via.placeholder.com/300" />
-        <Post src="https://via.placeholder.com/300" />
+        <Post src="https://post-phinf.pstatic.net/MjAyMDEyMzBfNjAg/MDAxNjA5Mjg4NzIzNDAx.qfbbjr3P-JiB1ioPif26h28fPwc05mpIRQZTyKM_6Wkg.5lI5_OJSuVMQDLoXoB1bDPNuO6hSZd9TNLlbrBME0CIg.JPEG/Iag0t8S0m8BJ7zwrx0ve16nHA9TI.jpg?type=w400" />
+        <Post src="/dozzi.jpg" />
+        <Post src="/dozzi2.jpg" />
+        <Post src="/bori.jpg" />
         {/* Add more posts as needed */}
       </Posts>
     )}
@@ -166,6 +231,48 @@ export default function User(){
     )}
   </Container>
   <MenuBar />
+  
+  <div>  {/* 여기부터 는 home 에서 퍼온거임 여기 페이지에 맞게 수정해야돼 집가서 화이팅해라 이거야~~ */}
+      <h1>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ뭐가 있으면 좋을거 같은데ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</h1>
+      <Feed>
+        {posts.map((post) => (
+          
+          <Post key={post.id}>  
+            <PostHeader>
+              <User>
+                <Avatar src={post.user.avatar} alt={post.user.username}/>
+                <Username>{post.user.username}</Username>
+              </User>
+            </PostHeader>
+            <PostImage src={post.imageUrl} alt="Post" onClick={() => openPostModal(post)}  />
+             
+            <PostActions>
+              <ActionButton onClick={() => handleLikeClick(post.id)}>
+                {likedPosts.includes(post.id) ? '❤️' : '🤍'}
+              </ActionButton>
+              <ActionButton onClick={() => openPostModal(post)}>💬</ActionButton>
+              <ActionButton>🔗</ActionButton>
+            </PostActions>
+            <PostContent>
+              <div><span>hagisilta_18</span>님 여러 명이 좋아합니다.</div>
+              <span>{post.user.username}</span> {post.postContent}
+              <div><a onClick={() => openPostModal(post)}>댓글 보기</a></div>
+              
+            </PostContent>
+            
+          </Post>
+          
+        ))}
+       
+      </Feed>
+      
+      <MenuBar />
+      {selectedPost && (
+        <PostModal post={selectedPost} onClose={closePostModal} />
+      )}
+    </div>{/*  여기까지 */}
+    
 </div>
+
   )
 }

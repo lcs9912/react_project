@@ -49,15 +49,43 @@ const CommentSection = styled.div`
   display : flex;
   flex-direction: column; // 댓글 목록을 세로로 배치
   flex-grow: 1; /* CommentSection이 ModalContent의 나머지 공간을 채우도록 설정합니다. */
-  margin-left: 20px; /* 이미지와 CommentSection 간격을 조절합니다. */
-  height : 100%;
+  padding : 10px;
+  padding-left : 20px;
+  border : 1px solid gray;
+
+  height : 850px;
   width : 30%;
-  background-color : yellow;
+  
+  #CommentHeader{
+    border-bottom : 1px solid gray;
+    padding : 10px 0px;
+    margin-bottom : 10px;
+    height: 10%;
+  }
+
+  #CommentMain{
+    border-bottom : 1px solid gray;
+    padding : 10px 0px;
+    margin-bottom : 10px;
+    height: 80%;
+
+    #zzz{
+      font-size : 12px;
+      cursor: pointer;
+      margin-left : 10px;
+    }
+  }
+
+  #CommentInp{
+    border-bottom : 1px solid gray;
+    height: 10%;
+    
+  }
 
   a{
     position: relative;
-    top:-31px;
-    left:291px;
+    top : -31px;
+    left : 273px;
     cursor: pointer;
   }
 `;
@@ -67,12 +95,18 @@ const CommentInput = styled.input`
   width: 90%;
   padding: 10px;
   margin-top: 10px;
+  border : none;
+  
 
 `;
 
 const CommentList = styled.span`
   // 댓글 목록 스타일링
   overflow-y: auto; // 댓글 목록이 넘칠 경우 스크롤 표시
+  div{
+    margin : 10px 0px;
+  }
+  
 `;
 
 
@@ -133,10 +167,28 @@ const ActionButton = styled.button`
   cursor: pointer;
 `;
 
+const PostContent = styled.div`
+  border-bottom: 1px solid black;
+
+  a{
+    cursor: pointer;
+  }
+
+  span{
+    font-weight: bold;
+  }
+
+  div{
+    margin: 5px 0px;
+  }
+`;
+
+
+
 export function PostModal({ post, onClose }) {
   const [comments, setComments] = useState([]); // 댓글 리스트 상태
   const [newComment, setNewComment] = useState(''); // 입력 값을 저장할 상태
-  const uId = 'lcs99 : ';
+  const uId = 'cansin_i : ';
 
   const handleCommentChange = (e) => {
     setNewComment(e.target.value); // 입력 값 업데이트
@@ -145,7 +197,7 @@ export function PostModal({ post, onClose }) {
   const handleAddComment = () => {
     if (newComment.trim() !== '') {
       // 댓글이 비어 있지 않은 경우에만 추가
-      setComments([...comments, uId, newComment]); // 댓글 리스트에 새로운 댓글 추가
+      setComments([...comments, uId + newComment]); // 댓글 리스트에 새로운 댓글 추가
       setNewComment(''); // 입력 필드 비우기
     }
   };
@@ -162,20 +214,42 @@ export function PostModal({ post, onClose }) {
         <CloseButton onClick={onClose}>✖</CloseButton>
         <img src={post.imageUrl} alt="Post" />
         <CommentSection>
-          <CommentList>
-            {comments.map((comment, index) => (
-              <div key={index}>{comment}</div>
-            ))}
-          </CommentList>
-          <CommentInput
-            type="text"
-            placeholder="댓글을 입력하세요"
-            value={newComment}
-            onChange={handleCommentChange}
-            onKeyDown={handleKeyDown} // Enter 키 이벤트 핸들링
+          
+          <div id='CommentHeader'> {/* 댓글 창 게시물 내용 */}
+            <span>{post.user.username}</span> {post.postContent}
+          </div>
+
+          <div id='CommentMain'> {/* 댓글 창 */}
             
-          />
-          <a onClick={handleAddComment}>게시</a>
+            <CommentList>
+            <div>hardId12 : 아이유가 어디있음?</div>
+            <div id='zzz'>답글 달기</div>
+            <div>sklgd12 : 고양이 귀여우니까 개추</div>
+            <div id='zzz'>답글 달기</div>
+              {comments.map((comment, index) => (
+                <div key={index}>
+                  {comment}
+                  <div id='zzz'>답글 달기</div>    
+                </div>
+                
+              
+              ))}
+              
+            </CommentList>
+          </div>
+          <div id='CommentInp'> {/* 댓글 입력창 */}
+            <CommentInput
+              type="text"
+              placeholder="댓글을 입력하세요"
+              value={newComment}
+              onChange={handleCommentChange}
+              onKeyDown={handleKeyDown} // Enter 키 이벤트 핸들링
+              
+            />
+            <a onClick={handleAddComment}>게시</a>
+          </div>
+       
+          
           
         </CommentSection>
       </ModalContent>
@@ -188,6 +262,7 @@ export default function Home(){
 
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
+  const [likedPosts, setLikedPosts] = useState([]); // 게시물 좋아요 상태를 관리하는 배열
 
   
 
@@ -199,27 +274,59 @@ export default function Home(){
         {
           id: 1,
           user: {
-            username: 'user1',
-            avatar: 'https://via.placeholder.com/32',
+            username: 'cansin_i',
+            avatar: '/bigHuman.jpg',
           },
-          imageUrl: 'https://i.namu.wiki/i/R0AhIJhNi8fkU2Al72pglkrT8QenAaCJd1as-d_iY6MC8nub1iI5VzIqzJlLa-1uzZm--TkB-KHFiT-P-t7bEg.webp',
+          imageUrl: 'https://post-phinf.pstatic.net/MjAyMDEyMzBfNjAg/MDAxNjA5Mjg4NzIzNDAx.qfbbjr3P-JiB1ioPif26h28fPwc05mpIRQZTyKM_6Wkg.5lI5_OJSuVMQDLoXoB1bDPNuO6hSZd9TNLlbrBME0CIg.JPEG/Iag0t8S0m8BJ7zwrx0ve16nHA9TI.jpg?type=w400',
+          postContent : '아이유 이쁘면 개추', 
+          
         },
         {
           id: 2,
           user: {
-            username: 'user2',
-            avatar: 'https://via.placeholder.com/32',
+            username: '_hedgx_',
+            avatar: '/good.jpg',
           },
-          imageUrl: 'https://health.chosun.com/site/data/img_dir/2023/04/04/2023040401590_0.jpg',
+          imageUrl: 'https://storage.enuri.info/pic_upload/knowbox/mobile_img/202201/2022011922203313347.jpg',
+          postContent : '아이유 였던것', 
         },
         {
           id: 3,
           user: {
-            username: 'user3',
-            avatar: 'https://via.placeholder.com/32',
+            username: 'hagisilta_18',
+            avatar: '/powerzero.jpg',
           },
           imageUrl: 'https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/32E9/image/BA2Qyx3O2oTyEOsXe2ZtE8cRqGk.JPG',
+          postContent : '이히힣ㅎ', 
         },
+        {
+          id: 4,
+          user: {
+            username: 'cansin_i',
+            avatar: '/bigHuman.jpg',
+          },
+          imageUrl: '/dozzi.jpg',
+          postContent : '아 ㅈㄴ 귀엽다', 
+        },
+        {
+          id: 5,
+          user: {
+            username: 'cansin_i',
+            avatar: '/bigHuman.jpg',
+          },
+          imageUrl: '/dozzi2.jpg',
+          postContent : '코박죽', 
+        },
+        {
+          id: 6,
+          user: {
+            username: 'cansin_i',
+            avatar: '/bigHuman.jpg',
+          },
+          imageUrl: '/bori.jpg',
+          postContent : '뭘봐', 
+        },
+
         
       ];
 
@@ -237,6 +344,17 @@ export default function Home(){
     setSelectedPost(null);
   };
   
+  const handleLikeClick = (postId) => {
+    // postId를 기준으로 해당 게시물의 좋아요 상태를 토글
+    setLikedPosts((prevLikedPosts) => {
+      if (prevLikedPosts.includes(postId)) {
+        return prevLikedPosts.filter((id) => id !== postId);
+      } else {
+        return [...prevLikedPosts, postId];
+      }
+    });
+  };
+
   return (
     <div>
       <h1>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ뭐가 있으면 좋을거 같은데ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</h1>
@@ -251,12 +369,21 @@ export default function Home(){
               </User>
             </PostHeader>
             <PostImage src={post.imageUrl} alt="Post" onClick={() => openPostModal(post)}  />
+             
             <PostActions>
-              <ActionButton>❤️</ActionButton>
+              <ActionButton onClick={() => handleLikeClick(post.id)}>
+                {likedPosts.includes(post.id) ? '❤️' : '🤍'}
+              </ActionButton>
               <ActionButton onClick={() => openPostModal(post)}>💬</ActionButton>
               <ActionButton>🔗</ActionButton>
             </PostActions>
-           
+            <PostContent>
+              <div><span>hagisilta_18</span>님 여러 명이 좋아합니다.</div>
+              <span>{post.user.username}</span> {post.postContent}
+              <div><a onClick={() => openPostModal(post)}>댓글 보기</a></div>
+              
+            </PostContent>
+            
           </Post>
           
         ))}

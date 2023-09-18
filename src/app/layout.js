@@ -10,9 +10,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body >
         <MenuBar/>
-          
           {children}
-        
         </body>
       </html>
     </>

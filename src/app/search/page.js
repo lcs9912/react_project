@@ -7,6 +7,7 @@ const Container = styled.div`
   padding: 20px;
   width : 1200px;
   margin : 10px auto;
+  
 `;
 
 const SearchBar = styled.input`

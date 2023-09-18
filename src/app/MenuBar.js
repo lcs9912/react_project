@@ -1,8 +1,9 @@
 "use client"
 import React from 'react';
 import styled from '@emotion/styled';
-import { FiHome, FiSearch, FiPlusSquare, FiHeart, FiUser, FiMenu } from 'react-icons/fi';
+import { FiHome, FiSearch, FiPlusSquare, FiHeart, FiUser, FiMenu, FiLogOut, FiBookmark, FiSettings, FiSun, FiClock, FiAlertTriangle } from 'react-icons/fi';
 import { Header }  from './Header';
+import { useState, useEffect } from 'react';
   
 const MenuBarContainer= styled.div`
   display: flex;
@@ -33,6 +34,8 @@ const MenuBarContainer= styled.div`
   a{
     text-decoration: none;
   }
+
+  
 `;
 
 const MenuIcon = styled.div`
@@ -47,7 +50,35 @@ const MenuIcon = styled.div`
 
 `;
 
+const MenuBox = styled.div`
+  margin-top : 54px;
+  display : flex;
+  flex-direction: column;
+  
+  
+  border : 1px solid black;
+  border-radius: 20px;
+  weight : 100px;
+  height : 325px;
+  
+
+  a{
+    border-radius : 15px;
+    margin-left : 10px;
+    padding : 10px;
+    margin-top : 10px;
+    cursor : pointer;
+    
+  }
+
+  a:hover{
+    background-color : #bfaeae38;
+  }
+`;
+
 const MenuBar = () => {
+  const [isLogoutVisible, setIsLogoutVisible] = useState(false);
+
   return (
     <>
     
@@ -85,12 +116,36 @@ const MenuBar = () => {
       </MenuIcon>
       </a>
 
-      <a href='#' id='lastIcon'>
-      <MenuIcon>
-        <FiMenu /> <span>더 보기</span>
-      </MenuIcon>
-      </a>
+      {isLogoutVisible && (
+        <MenuBox>
+          
+            <a><FiSettings /> 설정</a>
+            <a><FiClock /> 내 활동</a>
+            <a><FiBookmark /> 저장됨</a>
+            <a><FiSun /> 모드 전환</a>
+            <a><FiAlertTriangle /> 문제 신고</a>
+           
+            
+            <a onClick={() => location.href="../"}><FiLogOut /> 로그아웃</a>
+          
+          </MenuBox>
+        )}
+
+      <a href='#' id='lastIcon' onClick={(e) => {
+        e.preventDefault();
+        
+        setIsLogoutVisible(!isLogoutVisible)}}>
+          <MenuIcon>
+            <FiMenu /> <span>더 보기</span>
+          </MenuIcon>
+        </a>
+
+        
     </MenuBarContainer>
+    
+    
+      
+    
     </>
   );
 };

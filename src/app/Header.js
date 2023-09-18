@@ -4,11 +4,11 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-const HeaderLinkStyle= styled.div`
+const HeaderLinkStyle= styled.span`
   position: fixed;
   left : 0px;
   top : 19px;
-  width : 100%;
+  
   
   
   h1{
@@ -31,8 +31,7 @@ export function Header() {
   return (
     <>
       <HeaderLinkStyle>
-      <h1>
-      <a href="../">
+      <a href="/home">
         <Image
 
           src='/mylogo.png'
@@ -42,7 +41,7 @@ export function Header() {
        </Image>
       </a>
        
-      </h1>
+      
       </HeaderLinkStyle>
     
     </>
