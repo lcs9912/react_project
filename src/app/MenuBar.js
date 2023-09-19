@@ -106,7 +106,7 @@ const MenuBar = () => {
 
       <a href='/heart'>  
       <MenuIcon>
-        <FiHeart /> <span>좋아요</span>
+        <FiHeart /> <span>알람</span>
       </MenuIcon>
       </a>
 

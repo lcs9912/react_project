@@ -55,10 +55,10 @@ const ActivityContent = styled.div``;
 export default function Heart(){
   const [activeTab, setActiveTab] = useState('you');
   const [activities] = useState([
-    { type: 'like', user: 'john_doe', content: 'liked your post.' },
-    { type: 'comment', user: 'jane_doe', content: 'commented on your post.' },
-    { type: 'follow', user: 'bill_smith', content: 'started following you.' },
-    { type: 'mention', user: 'sarah_parker', content: 'mentioned you in a post.' },
+    { type: 'like', user: 'Chan_i', content: '_hzggx_ 님이 회원님의 게시물을 좋아합니다.', img : "/bigHuman.jpg" },
+    { type: 'comment', user: 'Chan_i', content: '_hzggx_ 님이 회원님을 팔로우 합니다.', img : "/bigHuman.jpg"  },
+    { type: 'follow', user: '_hzggx_', content: 'Chan_i 님이 회원님을 팔로우 합니다.', img : "/good.jpg"  },
+    { type: 'mention', user: '_hzggx_', content: 'Chan_i 님이 회원님의 게시물을 좋아합니다.', img : "/good.jpg"  },
   ]);
 
   const filteredActivities = activities.filter((activity) => {
@@ -88,7 +88,7 @@ export default function Heart(){
         <ActivityList>
           {filteredActivities.map((activity, index) => (
             <ActivityItem key={index}>
-              <Avatar src={`https://via.placeholder.com/150?text=${activity.user}`} />
+              <Avatar src={activity.img} />
               <ActivityContent>
                 <strong>{activity.user}</strong> {activity.content}
               </ActivityContent>

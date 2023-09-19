@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import MenuBar from '../MenuBar';
+import Image from 'next/image';
 
 
 const ModalOverlay = styled.div`
@@ -112,6 +113,7 @@ const CommentList = styled.span`
 `;
 
 
+
 const Feed = styled.div`
   margin: 0 auto;
   max-width: 600px;
@@ -185,6 +187,11 @@ const PostContent = styled.div`
   }
 `;
 
+const HomeImg = styled.img`
+  width: 350px;
+  height: 100px;
+  margin-left : 750px;
+`;
 
 
 export function PostModal({ post, onClose }) {
@@ -286,7 +293,7 @@ export default function Home(){
         {
           id: 2,
           user: {
-            username: '_hedgx_',
+            username: '_hzggx_',
             avatar: '/good.jpg',
           },
           imageUrl: 'https://storage.enuri.info/pic_upload/knowbox/mobile_img/202201/2022011922203313347.jpg',
@@ -359,7 +366,14 @@ export default function Home(){
 
   return (
     <div>
-      <h1>--------------------------------------------------------------스토리 넣고싶당---------------------------------------- </h1>
+      <a href="/home">
+        <HomeImg
+          src='/mylogo.png'
+          
+          alt='logo'
+          id='head'>
+       </HomeImg>
+      </a>
       <Feed>
         {posts.map((post) => (
           

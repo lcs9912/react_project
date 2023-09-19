@@ -20,16 +20,18 @@ const SearchBar = styled.input`
   border-radius: 4px;
 `;
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  grid-gap: 4px;
+const Flex = styled.div`
+  display: flex;
+  flex-wrap: wrap; /* Wrap the items into the next row when needed */
+  gap: 26px; /* Gap between items */
+  
 `;
 
-const GridItem = styled.img`
-  width: 100%;
-  height: 100%;
+const FlexItem = styled.img`
+  width: calc(25% - 20px); /* 25% width for each item (4 items per row) considering the gap */
+  height: 300px;
   object-fit: cover;
+  margin-bottom: 10px; /* Space below each item */
 `;
 export default function Search(){
   const [images, setImages] = useState([]);
@@ -38,21 +40,25 @@ export default function Search(){
   // Replace this function with a real API call
   const fetchImages = async () => {
     const newImages = [
-      'https://post-phinf.pstatic.net/MjAyMDEyMzBfNjAg/MDAxNjA5Mjg4NzIzNDAx.qfbbjr3P-JiB1ioPif26h28fPwc05mpIRQZTyKM_6Wkg.5lI5_OJSuVMQDLoXoB1bDPNuO6hSZd9TNLlbrBME0CIg.JPEG/Iag0t8S0m8BJ7zwrx0ve16nHA9TI.jpg?type=w400',
-      'https://storage.enuri.info/pic_upload/knowbox/mobile_img/202201/2022011922203313347.jpg',
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvhyld3BbLIgzsg7-deCReL0jR_3IIzKtnew&usqp=CAU',
-      'https://i.namu.wiki/i/g9VtEy1YTV96fZXEnUXKCyVEa7JM3x6pgTAV0AZKmgvOXDn-BWfDzvSSR2GwYLyd9DskFmZ6GwJUh7K_sktyYg.webp',
-      'https://via.placeholder.com/150',
-      'https://via.placeholder.com/150',
-      'https://via.placeholder.com/150',
-      'https://via.placeholder.com/150',
-      'https://via.placeholder.com/150',
+      'bori8.jpg',
+      'bori7.jpg',
+      '/cat.jpg',
+      '/dozzi3.jpg',
+      '/dozzi.jpg',
+      '/dozzi2.jpg',
+      '/bori.jpg',
+      '/bori2.jpg',
+      '/bori6.jpg',
+      '/bori3.jpg',
+      '/bori4.jpg',
+      '/bori5.png',
+    
     ];
 
     setImages((prevImages) => [...prevImages, ...newImages]);
 
     // Set 'hasMore' to false when there are no more images to load
-    // setHasMore(false);
+    setHasMore(false);
   };
 
   const handleSearch = (event) => {
@@ -78,11 +84,11 @@ export default function Search(){
           hasMore={hasMore}
           loader={<h4>Loading...</h4>}
         >
-          <Grid>
+          <Flex>
             {images.map((image, index) => (
-              <GridItem key={index} src={image} alt="Thumbnail" />
+              <FlexItem key={index} src={image} alt="Thumbnail" />
             ))}
-          </Grid>
+          </Flex>
         </InfiniteScroll>
       </Container>
       <MenuBar />

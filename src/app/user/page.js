@@ -211,15 +211,21 @@ export default function User(){
         <Post src="/dozzi.jpg" />
         <Post src="/dozzi2.jpg" />
         <Post src="/bori.jpg" />
+        <Post src="/bori2.jpg" />
+        <Post src="/bori3.jpg" />
+        <Post src="/bori4.jpg" />
         {/* Add more posts as needed */}
       </Posts>
     )}
     {activeTab === 'saved' && (
       <Posts>
         {/* Replace the src attribute with the user's actual saved post image URLs */}
-        <Post src="https://via.placeholder.com/300" />
-        <Post src="https://via.placeholder.com/300" />
-        <Post src="https://via.placeholder.com/300" />
+        <Post src="/bori5.png" />
+        <Post src="/bori6.jpg" />
+        <Post src="/bori7.jpg" />
+        <Post src="/bori8.jpg" />
+        <Post src="/dozzi3.jpg" />
+        <Post src="/cat.jpg" />
         {/* Add more saved posts as needed */}
       </Posts>
     )}
